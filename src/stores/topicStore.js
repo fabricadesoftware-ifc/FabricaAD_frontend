@@ -27,6 +27,20 @@ export const useTopicStore = defineStore('topic', () => {
     }
   }
 
+  const getTopicById = async (id) => {
+    loading.value = true
+    try{
+      selectedTopic.value = await topicService.getTopicById(id)
+    }
+    catch (e) {
+      error.value = e
+    }
+    finally {
+      loading.value = false
+      connection.value = true
+    }
+  }
+
   const createTopic = async (newTopic) => {
     loading.value = true
     try{
@@ -64,7 +78,7 @@ export const useTopicStore = defineStore('topic', () => {
       if(index !== -1) topics.value[index] = updated
     }
     catch (e){
-      error.value
+      error.value = e
     }
     finally{
       loading.value = false
@@ -95,6 +109,7 @@ export const useTopicStore = defineStore('topic', () => {
     isLoading,
     topicsCount,
     getTopics,
+    getTopicById,
     createTopic,
     updateTopic,
     patchTopic,
