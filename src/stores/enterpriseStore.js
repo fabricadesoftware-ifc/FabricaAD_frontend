@@ -5,7 +5,6 @@ import { ref, computed } from 'vue';
 export const useEnterpriseStore = defineStore('enterprise', () => {
   const enterprises = ref([])
   const selectedEnterprise = ref(null)
-  const enterpriseById = ref(null)
   const loading = ref(false)
   const error = ref(null)
   const connection = ref(false)
@@ -30,7 +29,7 @@ export const useEnterpriseStore = defineStore('enterprise', () => {
   const getEnterpriseById = async (id) => {
     loading.value = true
     try{
-      enterpriseById.value = await enterpriseService.getEnterpriseById(id)
+      selectedEnterprise.value = await enterpriseService.getEnterpriseById(id)
     }
     catch(e){
       error.value = e
@@ -52,7 +51,6 @@ export const useEnterpriseStore = defineStore('enterprise', () => {
     }
     finally{
       loading.value = false
-      connection.value = true
     }
   }
 
@@ -68,7 +66,6 @@ export const useEnterpriseStore = defineStore('enterprise', () => {
     }
     finally{
       loading.value = false
-      connection.value = true
     }
   }
 
@@ -84,7 +81,6 @@ export const useEnterpriseStore = defineStore('enterprise', () => {
     }
     finally {
       loading.value = false
-      connection.value = true
     }
   }
 
@@ -100,14 +96,12 @@ export const useEnterpriseStore = defineStore('enterprise', () => {
     }
     finally{
       loading.value = false
-      connection.value = true
     }
   }
 
   return {
     enterprises,
     selectedEnterprise,
-    enterpriseById,
     loading,
     error,
     connection,
