@@ -4,7 +4,6 @@ import telephoneService from '@/services/telephoneService';
 
 export const useTelephoneStore = defineStore('telephone', () => {
   const telephones = ref([]);
-  const telephoneById = ref(null);
   const selectTelephone = ref(null);
   const error = ref(null);
   const loading = ref(false);
@@ -28,7 +27,7 @@ export const useTelephoneStore = defineStore('telephone', () => {
   const getTelephoneById = async (id) => {
     loading.value = true;
     try {
-      telephoneById.value = await telephoneService.getTelephoneById(id);
+      selectTelephone.value = await telephoneService.getTelephoneById(id);
     } catch (e) {
       error.value = e;
     } finally {
@@ -46,7 +45,6 @@ export const useTelephoneStore = defineStore('telephone', () => {
       error.value = e;
     } finally {
       loading.value = false;
-      connection.value = true;
     }
   };
 
@@ -60,7 +58,6 @@ export const useTelephoneStore = defineStore('telephone', () => {
       error.value = e;
     } finally {
       loading.value = false;
-      connection.value = true;
     }
   };
 
@@ -74,13 +71,11 @@ export const useTelephoneStore = defineStore('telephone', () => {
       error.value = e;
     } finally {
       loading.value = false;
-      connection.value = true;
     }
   };
 
   return {
     telephones,
-    telephoneById,
     selectTelephone,
     error,
     loading,
