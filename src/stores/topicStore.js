@@ -56,6 +56,21 @@ export const useTopicStore = defineStore('topic', () => {
     }
   }
 
+  const patchTopic = async (topic) => {
+    loading.value = true
+    try {
+      const updated = await topicService.patchTopic(topic)
+      const index = topic.value.findIndex(t => t.id === topic.id)
+      if(index !== -1) topics.value[index] = updated
+    }
+    catch (e){
+      error.value
+    }
+    finally{
+      loading.value = false
+    }
+  }
+
   const deleteTopic = async (id) => {
     loading.value = true
     try {
@@ -68,7 +83,6 @@ export const useTopicStore = defineStore('topic', () => {
     }
     finally {
       loading.value = false
-      connection.value = false
     }
   }
 
@@ -83,6 +97,7 @@ export const useTopicStore = defineStore('topic', () => {
     getTopics,
     createTopic,
     updateTopic,
+    patchTopic,
     deleteTopic,
   }
 });

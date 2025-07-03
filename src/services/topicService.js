@@ -26,7 +26,7 @@ class TopicService {
 
   async createTopics (newTopic) {
     try {
-      const { data } = await api.post(`/topics`, newTopic);
+      const { data } = await api.post(`/topics/`, newTopic);
       return data;
     } catch (error) {
       console.error('Erro ao criar tópico', error);
@@ -34,17 +34,24 @@ class TopicService {
     }
   }
 
-  async updateTopic (topic) {
+  async updateTopic (updateTopic) {
     try {
-      const updatedDataTopic = {
-        title: topic.title,
-        enterprise_topic: topic.enterprise_topic,
-      }
-      const { data } = await api.put(`/topics/${topic.id}`, updatedDataTopic);
+      const { data } = await api.put(`/topics/${updateTopic.id}`, updateTopic);
       return data;
     } catch (error) {
       console.error('Erro ao atualizar tópico', error);
       throw error;
+    }
+  }
+
+  async patchTopic (topicPartial) {
+    try {
+      const { data } = await api.patch(`/topics/${topicPartial.id}`, topicPartial)
+      return data
+    }
+    catch (error) {
+      console.error('Erro ao atualizar tópico', error)
+      throw error
     }
   }
 
