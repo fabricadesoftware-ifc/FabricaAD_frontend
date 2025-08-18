@@ -89,7 +89,7 @@ export const useEnterpriseStore = defineStore('enterprise', () => {
     try{
       await enterpriseService.deleteEnterprise(id)
       const index = enterprises.value.findIndex(e => e.id === id)
-      if(index !== -1) enterprises.value.splice(index,)
+      if(index !== -1) enterprises.value.splice(index, 1)
     }
     catch (e){
       error.value = e
