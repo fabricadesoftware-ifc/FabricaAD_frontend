@@ -12,8 +12,12 @@ if (accessToken) {
 
 // Refresh token interceptor
 axiosInstance.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    console.log('Resposta bem-sucedida:', response); // Log para depuração
+    return response;
+  },
   async (error) => {
+    console.error('Erro no interceptor:', error); // Log para erros
     const originalRequest = error.config;
 
     if (error.response?.status === 401 && !originalRequest._retry) {
@@ -46,5 +50,35 @@ axiosInstance.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+// CODIGO PARA A PAGINA DE LOGIN
+// import { ref, onMounted } from 'vue';
+// import { useRouter } from 'vue-router';
+// import userService from '@/services/userService';
+
+// const user = ref({
+//   registration: '',
+//   password: ''
+// });
+
+// const router = useRouter();
+
+// const loginFunction = async () => {
+//   try {
+//     const response = await userService.login(user.value.registration, user.value.password);
+//     console.log('Login bem-sucedido:');
+//     router.push('/home');
+//   } catch (error) {
+//     console.error('Erro durante o login:', error);
+//   }
+// };
+
+// onMounted(() => {
+//   const accessToken = localStorage.getItem('access_token');
+//   const refreshToken = localStorage.getItem('refresh_token');
+//   if (accessToken && refreshToken) {
+//     router.push('/home');
+//   }
+// });
 
 export default axiosInstance;

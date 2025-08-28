@@ -15,9 +15,10 @@ class UserLogin {
       localStorage.setItem("refresh_token", refreshToken);
 
       console.log("Login bem-sucedido");
+      return data; // Retorne os dados para indicar sucesso
     } catch (error) {
       console.error("Erro ao fazer login:", error);
-      throw error;
+      throw error; // Continue lançando o erro para o `catch` no chamador
     }
   }
 
