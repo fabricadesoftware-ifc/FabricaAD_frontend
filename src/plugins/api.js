@@ -6,18 +6,18 @@ const axiosInstance = axios.create({
 
 const accessToken = localStorage.getItem('access_token');
 if (accessToken) {
-  // axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+  axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
 }
 
 
 // Refresh token interceptor
 axiosInstance.interceptors.response.use(
   (response) => {
-    console.log('Resposta bem-sucedida:', response); // Log para depuração
+    console.log('Resposta bem-sucedida:', response);
     return response;
   },
   async (error) => {
-    console.error('Erro no interceptor:', error); // Log para erros
+    console.error('Erro no interceptor:', error);
     const originalRequest = error.config;
 
     if (error.response?.status === 401 && !originalRequest._retry) {
