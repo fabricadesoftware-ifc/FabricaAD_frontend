@@ -20,8 +20,8 @@ export const useExampleStore = defineStore('example', () => {
     loading.value = true
     try {
       datas.value = await ExampleService.getData()
-    } catch (e) {
-      error.value = e
+    } catch (error) {
+      error.value = error
     } finally {
       loading.value = false
       connection.value = true
@@ -33,8 +33,8 @@ export const useExampleStore = defineStore('example', () => {
     loading.value = true
     try {
       datasBySomething.value = await ExampleService.getDataBySomething(id)
-    } catch (e) {
-      error.value = e
+    } catch (error) {
+      error.value = error
     } finally {
       loading.value = false
       connection.value = true
@@ -47,8 +47,8 @@ export const useExampleStore = defineStore('example', () => {
     try {
       const created = await ExampleService.createData(newData)
       datas.value.push(created)
-    } catch (e) {
-      error.value = e
+    } catch (error) {
+      error.value = error
     } finally {
       loading.value = false
     }
@@ -61,8 +61,8 @@ export const useExampleStore = defineStore('example', () => {
       const updated = await ExampleService.updateData(data)
       const index = datas.value.findIndex(d => d.id === data.id)
       if (index !== -1) datas.value[index] = updated
-    } catch (e) {
-      error.value = e
+    } catch (error) {
+      error.value = error
     } finally {
       loading.value = false
     }
@@ -74,8 +74,8 @@ export const useExampleStore = defineStore('example', () => {
     try {
       const index = datas.value.findIndex(d => d.id === id)
       if (index !== -1) datas.value.splice(index, 1)
-    } catch (e) {
-      error.value = e
+    } catch (error) {
+      error.value = error
     } finally {
       loading.value = false
     }
