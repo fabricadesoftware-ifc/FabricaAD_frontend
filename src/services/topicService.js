@@ -2,12 +2,10 @@ import api from '@/plugins/api';
 
 
 class TopicService {
-  async getAllTopics (page = 1, title = '', topic_filter = '') {
+  async getAllTopics () {
     try {
-      const { data } = await api.get('/topics', {
-        params: { page, title, topic_filter },
-      });
-      return data.results
+      const { data } = await api.get('/topics');
+      return data;
     } catch (error) {
       console.error('Erro ao listar Tópicos', error);
       throw error;
@@ -26,8 +24,7 @@ class TopicService {
 
   async createTopics (newTopic) {
     try {
-      const { data } = await api.post(`/topics/`, newTopic);
-      return data;
+      await api.post(`/topics/`, newTopic);
     } catch (error) {
       console.error('Erro ao criar tópico', error);
       throw error;
@@ -36,29 +33,26 @@ class TopicService {
 
   async updateTopic (updateTopic) {
     try {
-      const { data } = await api.put(`/topics/${updateTopic.id}`, updateTopic);
-      return data;
+      await api.put(`/topics/${updateTopic.id}`, updateTopic);
     } catch (error) {
       console.error('Erro ao atualizar tópico', error);
       throw error;
     }
   }
 
-  async patchTopic (topicPartial) {
+  async patchTopic (topicId, topicPartial) {
     try {
-      const { data } = await api.patch(`/topics/${topicPartial.id}`, topicPartial)
-      return data
+      await api.patch(`/topics/${topicId}`, topicPartial);
     }
     catch (error) {
-      console.error('Erro ao atualizar tópico', error)
-      throw error
+      console.error('Erro ao atualizar tópico', error);
+      throw error;
     }
   }
 
   async deleteTopic (topicId) {
     try {
-      const { data } = await api.delete(`/topics/${topicId}/`);
-      return data;
+      await api.delete(`/topics/${topicId}/`);
     } catch (error) {
       console.error('Erro ao deletar tópico', error);
       throw error;

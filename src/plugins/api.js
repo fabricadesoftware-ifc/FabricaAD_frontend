@@ -6,7 +6,7 @@ const axiosInstance = axios.create({
 
 const accessToken = localStorage.getItem('access_token');
 if (accessToken) {
-  axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+  // axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
 }
 
 
@@ -43,7 +43,7 @@ axiosInstance.interceptors.response.use(
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
         delete axiosInstance.defaults.headers.common['Authorization'];
-        window.location.href = '/login';
+        window.location.href = '/'; // Redirect to login page
         return Promise.reject(refreshError);
       }
     }

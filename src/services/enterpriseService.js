@@ -25,8 +25,7 @@ class EnterpriseService {
 
   async createEnterprise (newEnterprise){
     try{
-      const { data } = await api.post('/enterprises/', newEnterprise)
-      return data
+      await api.post('/enterprises/', newEnterprise)
     }
     catch(error){
       console.error('Erro ao criar empresa', error)
@@ -36,8 +35,7 @@ class EnterpriseService {
 
   async updateEnterprise (updateEnterprise) {
     try{
-      const { data } = await api.put(`/enterprises/${updateEnterprise.id}/`, updateEnterprise)
-      return data
+      await api.put(`/enterprises/${updateEnterprise.id}/`, updateEnterprise)
     }
     catch(error){
       console.error('Erro ao atualizar empresa', error)
@@ -47,8 +45,7 @@ class EnterpriseService {
 
   async patchEnterprise (patchEnterprise) {
     try{
-      const { data } = await api.patch(`/enterprises/${patchEnterprise.id}/`, patchEnterprise)
-      return data
+      await api.patch(`/enterprises/${patchEnterprise.id}/`, patchEnterprise)
     }
     catch(error){
       console.error('Erro ao atualizar empresa', error)
@@ -58,8 +55,7 @@ class EnterpriseService {
 
   async deleteEnterprise (enterpriseId) {
     try{
-      const { data } = await api.delete(`/enterprises/${enterpriseId}/`)
-      return data
+      await api.delete(`/enterprises/${enterpriseId}/`)
     }
     catch(error){
       console.error('Erro ao deletar empresa', error)
