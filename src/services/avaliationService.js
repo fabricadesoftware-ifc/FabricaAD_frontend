@@ -1,9 +1,9 @@
 import api from '@/plugins/api'
 
 class AvaliationService {
-  async getAllAvaliations (page = 1) {
+  async getAllAvaliations () {
     try{
-      const { data } = await api.get('/avaliations/', { params: { page } })
+      const { data } = await api.get('/avaliations/')
       return data.results
     }
     catch(error){

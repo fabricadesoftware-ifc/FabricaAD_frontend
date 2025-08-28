@@ -2,10 +2,10 @@ import api from '@/plugins/api'
 
 class TelephoneService {
 
-  async getAllTelephones (page = 1, number = '', type = '') {
+  async getAllTelephones (page) {
     try{
-      const { data } = await api.get('/telephones', { params: { page, number, type } })
-      return data.results
+      const { data } = await api.get('/telephones', { params: { page } })
+      return data
     }
     catch(error){
       console.error('Erro ao listar todos os telefones', error)
@@ -26,8 +26,7 @@ class TelephoneService {
 
   async createTelephone (newTelephone) {
     try{
-      const { data } = await api.post('/telephones/', newTelephone)
-      return data
+      await api.post('/telephones/', newTelephone)
     }
     catch(error) {
       console.error('Erro ao criar novo telefone:', error)
@@ -35,10 +34,9 @@ class TelephoneService {
     }
   }
 
-  async updateTelephone (updateTelephone) {
+  async updateTelephone (telephoneId, updateTelephone) {
     try{
-      const { data } = await api.put(`/telephones/${updateTelephone.id}/`, updateTelephone)
-      return data
+      await api.put(`/telephones/${telephoneId}/`, updateTelephone)
     }
     catch(error){
       console.error('Erro ao atualizar telephone', error)
@@ -48,8 +46,7 @@ class TelephoneService {
 
   async deleteTelephone (telephoneId){
     try{
-      const { data } = await api.delete(`/telephones/${telephoneId}/`)
-      return data
+      await api.delete(`/telephones/${telephoneId}/`)
     }
     catch(error){
       console.error('Erro ao deletar telefone', error)

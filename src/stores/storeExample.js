@@ -4,27 +4,22 @@ import { ExampleService } from '@/services'
 
 export const useExampleStore = defineStore('example', () => {
   // State
-  const datas = ref([]) // All data
   const selectedData = ref(null) // Selected item
-  const datasBySomething = ref([]) // Filtered data
   const loading = ref(false) // Loading state
-  const error = ref(null) // Error state
-  const connection = ref(false) // Connection status (used after first fetch)
 
   // Getters
   const isLoading = computed(() => loading.value)
-  const datasCount = computed(() => datas.value.length)
 
   // Fetch all data
   const getData = async () => {
     loading.value = true
     try {
-      datas.value = await ExampleService.getData()
+      const response = await ExampleService.getData()
+      return response
     } catch (error) {
-      error.value = error
+      console.error('Error fetching data:', error)
     } finally {
       loading.value = false
-      connection.value = true
     }
   }
 
@@ -32,12 +27,12 @@ export const useExampleStore = defineStore('example', () => {
   const getDataBySomething = async (id) => {
     loading.value = true
     try {
-      datasBySomething.value = await ExampleService.getDataBySomething(id)
+      const response = await ExampleService.getDataBySomething(id)
+      return response
     } catch (error) {
-      error.value = error
+      console.error('Error fetching data by something:', error)
     } finally {
       loading.value = false
-      connection.value = true
     }
   }
 
@@ -45,24 +40,21 @@ export const useExampleStore = defineStore('example', () => {
   const createData = async (newData) => {
     loading.value = true
     try {
-      const created = await ExampleService.createData(newData)
-      datas.value.push(created)
+      await ExampleService.createData(newData)
     } catch (error) {
-      error.value = error
+      console.error('Error creating data:', error)
     } finally {
       loading.value = false
     }
   }
 
   // Update existing item
-  const updateData = async (data) => {
+  const updateData = async (id, data) => {
     loading.value = true
     try {
-      const updated = await ExampleService.updateData(data)
-      const index = datas.value.findIndex(d => d.id === data.id)
-      if (index !== -1) datas.value[index] = updated
+      await ExampleService.updateData(id, data)
     } catch (error) {
-      error.value = error
+      console.error('Error updating data:', error)
     } finally {
       loading.value = false
     }
@@ -72,10 +64,9 @@ export const useExampleStore = defineStore('example', () => {
   const deleteData = async (id) => {
     loading.value = true
     try {
-      const index = datas.value.findIndex(d => d.id === id)
-      if (index !== -1) datas.value.splice(index, 1)
+      await ExampleService.deleteData(id)
     } catch (error) {
-      error.value = error
+      console.error('Error deleting data:', error)
     } finally {
       loading.value = false
     }
@@ -85,10 +76,7 @@ export const useExampleStore = defineStore('example', () => {
   return {
     datas,
     selectedData,
-    datasBySomething,
     loading,
-    error,
-    connection,
     isLoading,
     datasCount,
     getData,

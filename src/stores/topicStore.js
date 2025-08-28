@@ -1,14 +1,12 @@
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 import topicService from '@/services/topicService';
+import { g } from 'node_modules/unplugin-vue-router/dist/types-CTGkmk9e';
 
 
 export const useTopicStore = defineStore('topic', () => {
   const topics = ref([]);
-  const selectedTopic = ref([]);
-  const error = ref(null);
   const loading = ref(null);
-  const connection = ref(null);
 
   const isLoading = computed(() => loading.value)
   const topicsCount = computed(() => topics.value.length)
@@ -18,82 +16,78 @@ export const useTopicStore = defineStore('topic', () => {
     try{
       topics.value = await topicService.getAllTopics()
     }
-    catch(e){
-      error.value = e
+    catch(error){
+      console.error('Error getting topics:', error)
     }
     finally{
       loading.value = false
-      connection.value = true
     }
   }
 
   const getTopicById = async (id) => {
     loading.value = true
     try{
-      selectedTopic.value = await topicService.getTopicById(id)
+      const response = await topicService.getTopicById(id)
+      return response
     }
-    catch (e) {
-      error.value = e
+    catch (error) {
+      console.error('Error getting topic by ID:', error)
     }
     finally {
       loading.value = false
-      connection.value = true
     }
   }
 
   const createTopic = async (newTopic) => {
     loading.value = true
     try{
-      const created = await topicService.createTopics(newTopic)
-      topics.value.push(created)
+      await topicService.createTopics(newTopic)
+      getTopics()
     }
-    catch(e){
-      error.value = e
-    }
-    finally{
-      loading.value = false
-    }
-  }
-
-  const updateTopic = async (topic) => {
-    loading.value = true
-    try {
-      const updated = await topicService.updateTopic(topic)
-      const index = topics.value.findIndex(t => t.id === topic.id)
-      if(index !== -1) topics.value[index] = updated
-    }
-    catch(e){
-      error.value = e
+    catch(error){
+      console.error('Error creating topic:', error)
     }
     finally{
       loading.value = false
     }
   }
 
-  const patchTopic = async (topic) => {
+  const updateTopic = async (topicId, topic) => {
     loading.value = true
     try {
-      const updated = await topicService.patchTopic(topic)
-      const index = topic.value.findIndex(t => t.id === topic.id)
-      if(index !== -1) topics.value[index] = updated
+      await topicService.updateTopic(topicId, topic)
+      getTopics()
     }
-    catch (e){
-      error.value = e
+    catch(error){
+      console.error('Error updating topic:', error)
     }
     finally{
       loading.value = false
     }
   }
 
-  const deleteTopic = async (id) => {
+  const patchTopic = async (topicId, topic) => {
     loading.value = true
     try {
-      await topicService.deleteTopic(id);
-      const index = topics.value.findIndex(t => t.id === id)
-      if(index !== -1) topics.value.splice(index, 1)
+      await topicService.patchTopic(topicId, topic)
+      getTopics()
     }
-    catch(e) {
-      error.value = e
+    catch (error){
+      console.error('Error patching topic:', error)
+    }
+    finally{
+      loading.value = false
+    }
+  }
+
+  const deleteTopic = async (topicId) => {
+    loading.value = true
+    try {
+      await topicService.deleteTopic(topicId);
+      getTopics()
+    }
+    catch(error) {
+      console.error('Error deleting topic:', error)
     }
     finally {
       loading.value = false
@@ -102,10 +96,7 @@ export const useTopicStore = defineStore('topic', () => {
 
   return {
     topics,
-    selectedTopic,
     loading,
-    error,
-    connection,
     isLoading,
     topicsCount,
     getTopics,

@@ -3,85 +3,73 @@ import { ref, computed } from 'vue';
 import telephoneService from '@/services/telephoneService';
 
 export const useTelephoneStore = defineStore('telephone', () => {
-  const telephones = ref([]);
-  const selectTelephone = ref(null);
-  const error = ref(null);
+
   const loading = ref(false);
-  const connection = ref(false);
-
   const isLoading = computed(() => loading.value);
-  const telephonesCount = computed(() => telephones.value.length);
 
-  const getTelephones = async () => {
+  const getTelephones = async (page) => {
     loading.value = true;
     try {
-      telephones.value = await telephoneService.getAllTelephones();
-    } catch (e) {
-      error.value = e;
+      const results = await telephoneService.getAllTelephones(page);
+      return results;
+    } catch (error) {
+      console.error('Error getting telephones:', error);
     } finally {
       loading.value = false;
-      connection.value = true;
     }
   };
 
   const getTelephoneById = async (id) => {
     loading.value = true;
     try {
-      selectTelephone.value = await telephoneService.getTelephoneById(id);
-    } catch (e) {
-      error.value = e;
+      const results = await telephoneService.getTelephoneById(id);
+      return results;
+    } catch (error) {
+      console.error('Error getting telephone by ID:', error);
     } finally {
       loading.value = false;
-      connection.value = true;
     }
   };
 
   const createTelephone = async (newTelephone) => {
     loading.value = true;
     try {
-      const created = await telephoneService.createTelephone(newTelephone);
-      telephones.value.push(created);
-    } catch (e) {
-      error.value = e;
+      await telephoneService.createTelephone(newTelephone);
+      getTelephones()
+    } catch (error) {
+      console.error('Error creating telephone:', error);
     } finally {
       loading.value = false;
     }
   };
 
-  const updateTelephone = async (telephone) => {
+  const updateTelephone = async (telephoneID, telephone) => {
     loading.value = true;
     try {
-      const updated = await telephoneService.updateTelephone(telephone);
-      const index = telephones.value.findIndex(t => t.id === telephone.id);
-      if (index !== -1) telephones.value[index] = updated;
-    } catch (e) {
-      error.value = e;
+      await telephoneService.updateTelephone(telephoneID, telephone);
+      getTelephones()
+    } catch (error) {
+      console.error('Error updating telephone:', error);
     } finally {
       loading.value = false;
     }
   };
 
-  const deleteTelephone = async (id) => {
-    loading.value = true
+  const deleteTelephone = async (telephoneID) => {
+    loading.value = true;
     try {
-      await telephoneService.deleteTelephone(id)
-      const index = telephones.value.findIndex(t => t.id === id);
-      if (index !== -1) telephones.value.splice(index, 1);
-    } catch (e) {
-      error.value = e;
+      await telephoneService.deleteTelephone(telephoneID);
+      getTelephones()
+    } catch (error) {
+      console.error('Error deleting telephone:', error);
     } finally {
       loading.value = false;
     }
   };
 
   return {
-    telephones,
-    selectTelephone,
-    error,
     loading,
-    connection,
     isLoading,
-    telephonesCount,
     getTelephones,
     getTelephoneById,
     createTelephone,
