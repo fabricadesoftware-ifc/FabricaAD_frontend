@@ -7,6 +7,7 @@ class UserLogin {
         registration,
         password,
       });
+      console.log(data);
 
       const accessToken = data.access;
       const refreshToken = data.refresh;
