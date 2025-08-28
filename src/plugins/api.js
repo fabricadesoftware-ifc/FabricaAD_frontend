@@ -69,7 +69,7 @@ axiosInstance.interceptors.response.use(
 //     console.log('Login bem-sucedido:');
 //     router.push('/home');
 //   } catch (error) {
-//     console.error('Erro durante o login:', error);
+//     console.error('Error catched in loginFunction:', error);
 //   }
 // };
 
