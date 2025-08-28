@@ -1,13 +1,11 @@
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 import topicService from '@/services/topicService';
-import { g } from 'node_modules/unplugin-vue-router/dist/types-CTGkmk9e';
 
 
 export const useTopicStore = defineStore('topic', () => {
   const topics = ref([]);
   const loading = ref(null);
-
   const isLoading = computed(() => loading.value)
   const topicsCount = computed(() => topics.value.length)
 
