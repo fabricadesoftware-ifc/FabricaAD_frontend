@@ -4,7 +4,6 @@ import positionService from '@/services/positionService'
 import { get } from 'node:http'
 
 export const usePositionStore = defineStore('position', () => {
-    
   const positions = ref([])
   const loading = ref(false)
 
@@ -37,36 +36,36 @@ export const usePositionStore = defineStore('position', () => {
   const createPosition = async (newPosition) => {
     loading.value = true
     try {
-        await positionService.createPosition(newPosition)
-        getPositions()
+      await positionService.createPosition(newPosition)
+      getPositions()
     } catch (error) {
-        console.error('Error creating position:', error)
+      console.error('Error creating position:', error)
     } finally {
-        loading.value = false
+      loading.value = false
     }
   }
 
   const updatePosition = async (positionId, position) => {
     loading.value = true
     try {
-        await positionService.updatePosition(positionId, position)
-        getPositions()
+      await positionService.updatePosition(positionId, position)
+      getPositions()
     } catch (error) {
-        console.error('Error updating position:', error)
+      console.error('Error updating position:', error)
     } finally {
-        loading.value = false
+      loading.value = false
     }
   }
 
   const deletePosition = async (positionId) => {
     loading.value = true
     try {
-        await positionService.deletePosition(positionId)
-        getPositions()
+      await positionService.deletePosition(positionId)
+      getPositions()
     } catch (error) {
-        console.error('Error deleting position:', error)
+      console.error('Error deleting position:', error)
     } finally {
-        loading.value = false
+      loading.value = false
     }
   }
 
@@ -78,6 +77,6 @@ export const usePositionStore = defineStore('position', () => {
     getPositionById,
     createPosition,
     updatePosition,
-    deletePosition,
+    deletePosition
   }
 })
