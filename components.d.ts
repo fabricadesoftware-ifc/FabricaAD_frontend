@@ -8,7 +8,17 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    ActionColumn: typeof import('./src/components/panel/column/ActionColumn.vue')['default']
     AuthMenu: typeof import('./src/components/auth/AuthMenu.vue')['default']
+    CircularProgress: typeof import('./src/components/panel/CircularProgress.vue')['default']
+    ColumnAction: typeof import('./src/components/panel/column/ColumnAction.vue')['default']
+    ColumnBg: typeof import('./src/components/panel/column/ColumnBg.vue')['default']
+    ColumnDesc: typeof import('./src/components/panel/column/ColumnDesc.vue')['default']
+    ColumnText: typeof import('./src/components/panel/column/ColumnText.vue')['default']
+    DefaultRow: typeof import('./src/components/panel/rows/defaultRow.vue')['default']
+    EmployerRow: typeof import('./src/components/panel/rows/EmployerRow.vue')['default']
+    InfoColumns: typeof import('./src/components/panel/column/InfoColumns.vue')['default']
+    InfoPanel: typeof import('./src/components/panel/InfoPanel.vue')['default']
     InputGlobal: typeof import('./src/components/global/InputGlobal.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
