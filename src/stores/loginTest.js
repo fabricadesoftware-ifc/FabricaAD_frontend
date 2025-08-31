@@ -10,6 +10,6 @@ export async function login(){
         newObj[`${valuesNewObj[index]}`] = el.value
     })
 
-    const {data} = await api.post('/token', newObj)
+    const {data} = await api.post('token/', newObj)
     console.log(data)
 }
