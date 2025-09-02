@@ -16,7 +16,9 @@ declare module 'vue' {
     InputGlobal: typeof import('./src/components/global/InputGlobal.vue')['default']
     PanelRows: typeof import('./src/components/panel/PanelRows.vue')['default']
     PanelTable: typeof import('./src/components/panel/PanelTable.vue')['default']
+    ListItemMenu: typeof import('./src/components/layout/ListItemMenu.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SidebarMenu: typeof import('./src/components/SidebarMenu.vue')['default']
   }
 }
