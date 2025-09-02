@@ -21,8 +21,10 @@ declare module 'vue' {
     NotificationIcon: typeof import('./src/components/icons/NotificationIcon.vue')['default']
     PanelRows: typeof import('./src/components/panel/PanelRows.vue')['default']
     PanelTable: typeof import('./src/components/panel/PanelTable.vue')['default']
+    ListItemMenu: typeof import('./src/components/layout/ListItemMenu.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SearchIcon: typeof import('./src/components/icons/SearchIcon.vue')['default']
-  }
+    SidebarMenu: typeof import('./src/components/SidebarMenu.vue')['default']
+}
 }
