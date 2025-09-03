@@ -19,6 +19,8 @@ declare module 'vue' {
     InputGlobal: typeof import('./src/components/global/InputGlobal.vue')['default']
     MenuLeftIcon: typeof import('./src/components/icons/MenuLeftIcon.vue')['default']
     NotificationIcon: typeof import('./src/components/icons/NotificationIcon.vue')['default']
+    PanelRows: typeof import('./src/components/panel/PanelRows.vue')['default']
+    PanelTable: typeof import('./src/components/panel/PanelTable.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SearchIcon: typeof import('./src/components/icons/SearchIcon.vue')['default']
