@@ -1,12 +1,13 @@
 <script setup>
-import DefaultRow from '@/components/panel/rows/EmployerRow.vue';
+import PanelTable from '@/components/panel/PanelTable.vue';
 
 
+onMounted(() => {
+    
+})
 </script>
 <template>
-    <div class="w-screen h-screen bg-white">
-        <div>
-            <DefaultRow/>
-        </div>
+    <div class="w-100 d-flex justify-center align-center h-100 bg-white pa-3">
+        <panel-table />
     </div>
 </template>

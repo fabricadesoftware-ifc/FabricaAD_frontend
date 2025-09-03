@@ -20,6 +20,8 @@ declare module 'vue' {
     InfoColumns: typeof import('./src/components/panel/column/InfoColumns.vue')['default']
     InfoPanel: typeof import('./src/components/panel/InfoPanel.vue')['default']
     InputGlobal: typeof import('./src/components/global/InputGlobal.vue')['default']
+    PanelRows: typeof import('./src/components/panel/PanelRows.vue')['default']
+    PanelTable: typeof import('./src/components/panel/PanelTable.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
