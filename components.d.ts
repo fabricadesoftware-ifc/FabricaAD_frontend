@@ -13,8 +13,14 @@ declare module 'vue' {
     CircularProgress: typeof import('./src/components/panel/CircularProgress.vue')['default']
     ColumnText: typeof import('./src/components/panel/column/ColumnText.vue')['default']
     EmployerRow: typeof import('./src/components/panel/rows/EmployerRow.vue')['default']
+    HeaderComp: typeof import('./src/components/global/layout/HeaderComp.vue')['default']
+    InfoColumns: typeof import('./src/components/panel/column/InfoColumns.vue')['default']
+    InfoPanel: typeof import('./src/components/panel/InfoPanel.vue')['default']
     InputGlobal: typeof import('./src/components/global/InputGlobal.vue')['default']
+    MenuLeftIcon: typeof import('./src/components/icons/MenuLeftIcon.vue')['default']
+    NotificationIcon: typeof import('./src/components/icons/NotificationIcon.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SearchIcon: typeof import('./src/components/icons/SearchIcon.vue')['default']
   }
 }
