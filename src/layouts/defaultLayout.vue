@@ -1,20 +1,21 @@
 <template>
   <v-main class="" style="display: flex; padding: 20px; gap: 20px; background-color: #F0F5F9;">
     <div style="width: 380px;" class="default-item" >
-      Menu
+      <sidebar-menu/>
     </div>
     <div style="gap: 20px; display: flex; flex-direction: column; width: 100%;">
-      <div style="height: 75px;" class="default-item">Header</div>
-      <div style="height: 60px;" class="default-item">Path</div>
-      <div style="height: 100%;" class="default-item">
+      <div style="height: 75px;" class="default-item"></div>
+      <div style="height: 60px;" class="default-item"></div>
+      <div style="height: 100%;" class="default-item pa-8" >
         <slot>
         </slot>
-    </div>
+      </div>
     </div>
   </v-main>
 </template>
 
 <script setup>
+import SidebarMenu from '@/components/SidebarMenu.vue';
 </script>
 
 <style scoped>
