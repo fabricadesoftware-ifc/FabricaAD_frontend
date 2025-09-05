@@ -14,6 +14,8 @@ declare module 'vue' {
     ColumnText: typeof import('./src/components/panel/column/ColumnText.vue')['default']
     EmployerRow: typeof import('./src/components/panel/rows/EmployerRow.vue')['default']
     InputGlobal: typeof import('./src/components/global/InputGlobal.vue')['default']
+    PanelRows: typeof import('./src/components/panel/PanelRows.vue')['default']
+    PanelTable: typeof import('./src/components/panel/PanelTable.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
