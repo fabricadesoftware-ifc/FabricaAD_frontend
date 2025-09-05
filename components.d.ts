@@ -8,15 +8,12 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    ActionColumn: typeof import('./src/components/panel/column/ActionColumn.vue')['default']
     AuthMenu: typeof import('./src/components/auth/AuthMenu.vue')['default']
     CircularProgress: typeof import('./src/components/panel/CircularProgress.vue')['default']
-    ColumnText: typeof import('./src/components/panel/column/ColumnText.vue')['default']
-    EmployerRow: typeof import('./src/components/panel/rows/EmployerRow.vue')['default']
     InputGlobal: typeof import('./src/components/global/InputGlobal.vue')['default']
+    ListItemMenu: typeof import('./src/components/layout/ListItemMenu.vue')['default']
     PanelRows: typeof import('./src/components/panel/PanelRows.vue')['default']
     PanelTable: typeof import('./src/components/panel/PanelTable.vue')['default']
-    ListItemMenu: typeof import('./src/components/layout/ListItemMenu.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SidebarMenu: typeof import('./src/components/SidebarMenu.vue')['default']

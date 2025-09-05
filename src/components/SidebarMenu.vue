@@ -3,16 +3,16 @@
   import ListItemMenu from './layout/ListItemMenu.vue';
 </script>
 <template>
-  <v-navigation-drawer app class="pa-4" permanent width="260" color="white">
+  <div class="pa-6">
     <!-- Logo / Título -->
     <div class="logo-container">
       <span class="logo-panel">PAINEL</span> <span class="logo-rh">RH</span>
     </div>
     <!-- GERENCIAMENTO -->
-    <v-list density="comfortable" nav>
+    <v-list density="comfortable">
       <ListItemMenu :arr="menuItems" :subheader-indexes="[0, 4, 8, 11]" /> 
     </v-list>
-  </v-navigation-drawer>
+  </div>
 </template>
 <style scoped>
 .logo-container {
@@ -38,19 +38,6 @@
   -webkit-text-fill-color: transparent;
   display: inline-block;
   letter-spacing: 1px;
-}
-::v-deep(.v-navigation-drawer__content) {
-  overflow-y: auto !important;
-}
-
-::v-deep(.v-navigation-drawer__content::-webkit-scrollbar) {
-  width: 6px;
-}
-
-
-::v-deep(.v-navigation-drawer__content::-webkit-scrollbar-thumb) {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
 }
 
 </style>

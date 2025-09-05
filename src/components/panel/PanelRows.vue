@@ -24,8 +24,8 @@ const props = defineProps(
     })
 </script>
 <template>
-        <td v-for="value, i in ArrWithDesc" :key="i"  style="border-top: 1px solid grey; max-width: 150px" class="px-4" >
-            <div v-if="typeof value === 'string'"  :class="defineDesc !== i ? 'd-flex flex-column': 'd-flex'" >
+        <td v-for="value, i in ArrWithDesc" :key="i"  style="border-top: 1px solid #dedede; max-width: 150px" class="px-4" >
+            <div v-if="typeof value === 'string'"  :class="defineDesc !== i ? 'd-flex flex-column': 'd-flex'">
                 <p :style=" defineArrBg === i ? {height: '35px'} : ''" class="text-truncate w-100" :class="defineArrBg === i ? 'bg-grey-lighten-2 rounded  d-flex justify-center align-center' : ''">{{ value }}</p>
                 <VCardSubtitle v-if="i === defineDescTitle">{{ panelArr[defineDesc] }}</VCardSubtitle>
             </div>
