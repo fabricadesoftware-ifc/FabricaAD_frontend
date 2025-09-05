@@ -8,7 +8,6 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    ActionColumn: typeof import('./src/components/panel/column/ActionColumn.vue')['default']
     AuthMenu: typeof import('./src/components/auth/AuthMenu.vue')['default']
     CircularProgress: typeof import('./src/components/panel/CircularProgress.vue')['default']
     ColumnText: typeof import('./src/components/panel/column/ColumnText.vue')['default']
@@ -19,9 +18,10 @@ declare module 'vue' {
     InputGlobal: typeof import('./src/components/global/InputGlobal.vue')['default']
     MenuLeftIcon: typeof import('./src/components/icons/MenuLeftIcon.vue')['default']
     NotificationIcon: typeof import('./src/components/icons/NotificationIcon.vue')['default']
+    InputGlobal: typeof import('./src/components/global/InputGlobal.vue')['default']
+    ListItemMenu: typeof import('./src/components/layout/ListItemMenu.vue')['default']
     PanelRows: typeof import('./src/components/panel/PanelRows.vue')['default']
     PanelTable: typeof import('./src/components/panel/PanelTable.vue')['default']
-    ListItemMenu: typeof import('./src/components/layout/ListItemMenu.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SearchIcon: typeof import('./src/components/icons/SearchIcon.vue')['default']

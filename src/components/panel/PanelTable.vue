@@ -8,15 +8,15 @@
     }
 </script>
 <template>
-    <table class="w-75">
+    <table class="bg-white">
         <tr >
-            <th v-for="keys, i in removeColumn()" :key="i" class="text-start">
-                <VCardSubtitle >{{ keys }}</VCardSubtitle>
+            <th v-for="keys, i in removeColumn()" :key="i" class="text-start" style="color: rgba(0, 0, 0, 0.5);">
+                <VCardSubtitle style="font-weight: 500; text-transform: capitalize;">{{ keys }}</VCardSubtitle>
             </th>
         </tr>
         <tr v-for="item, i in panelcolumns" :key="i"  style="height: 83px;">
             <PanelRows :panel-arr="Object.values(item)" :define-desc="1" :define-desc-title="0" :define-arr-bg="3"/>
-            <td style="border-top: 1px solid gray;">
+            <td>
                 <VIcon icon="mdi-launch" color="blue"></VIcon>
             </td>
         </tr>
@@ -24,7 +24,7 @@
 </template>
 <style>
 table {
-  font-family: arial, sans-serif;
+  font-family: 'poppins', 'sans-serif';
   border-collapse: collapse;
   width: 100%;
 }

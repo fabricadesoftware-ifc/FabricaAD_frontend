@@ -1,13 +1,15 @@
 <script setup>
 import PanelTable from '@/components/panel/PanelTable.vue';
-
+import defaultLayout from '@/layouts/defaultLayout.vue';
 
 onMounted(() => {
     
 })
 </script>
 <template>
-    <div class="w-100 d-flex justify-center align-center h-100 bg-white pa-3">
-        <panel-table />
-    </div>
+        <defaultLayout>
+        <div>
+            <panel-table />
+        </div>
+    </defaultLayout>
 </template>
