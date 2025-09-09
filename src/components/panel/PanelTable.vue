@@ -14,7 +14,7 @@
                 <VCardSubtitle style="font-weight: 500; text-transform: capitalize;">{{ keys }}</VCardSubtitle>
             </th>
         </tr>
-        <tr v-for="item, i in panelcolumns" :key="i"  style="height: 83px;">
+        <tr v-for="item, i in panelcolumns" :key="i"  style="height: 83px; border-top: 1px solid #dedede;" >
             <PanelRows :panel-arr="Object.values(item)" :define-desc="1" :define-desc-title="0" :define-arr-bg="3"/>
             <td>
                 <VIcon icon="mdi-launch" color="blue"></VIcon>
