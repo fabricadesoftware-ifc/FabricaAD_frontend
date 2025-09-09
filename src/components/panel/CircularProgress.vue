@@ -9,14 +9,14 @@
            a 15.9155 15.9155 0 0 1 0 -31.831"
       />
       <path 
-        :style="{stroke: progress > 7 ? 'green' : progress < 5 ? 'red' : 'yellow'}"
+        :style="{stroke: progress > 7 ? 'lightgreen' : progress < 5 ? 'red' : 'yellow'}"
         class="circle"
         :stroke-dasharray="(progress * 10) + ', 100'"
         d="M18 2.0845
            a 15.9155 15.9155 0 0 1 0 31.831
            a 15.9155 15.9155 0 0 1 0 -31.831"
       />
-      <text x="18" y="20.35" class="percentage"  :style="{fill: progress > 7 ? 'green' : progress < 5 ? 'red' : 'yellow'}">{{ progress }}</text>
+      <text x="18" y="20.35" class="percentage">{{ progress }}</text>
     </svg>
   </div>
 </template>
