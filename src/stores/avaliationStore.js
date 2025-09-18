@@ -1,11 +1,10 @@
 import avaliationService from '@/services/avaliationService';
-import { get } from 'node_modules/axios/index.cjs';
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 
 export const useAvaliationStore = defineStore('avaliation', () => {
   const loading = ref(false)
-
+  const avaliations = ref([])
   const isLoading = computed(() => loading.value)
   const avaliationsCount = computed(() => avaliations.value.length)
 
@@ -13,7 +12,7 @@ export const useAvaliationStore = defineStore('avaliation', () => {
     loading.value = true
     try{
       const response = await avaliationService.getAllAvaliations()
-      return response
+      avaliations.value = response
     }
     catch(error){
       console.error(error)
@@ -91,11 +90,10 @@ export const useAvaliationStore = defineStore('avaliation', () => {
   }
 
   return{
-    avaliations,
-    selectedAvaliation,
     loading,
     isLoading,
     avaliationsCount,
+    avaliations,
     getAllAvaliations,
     getAvaliationById,
     createAvaliation,
