@@ -18,13 +18,18 @@ declare module 'vue' {
     InputGlobal: typeof import('./src/components/global/InputGlobal.vue')['default']
     MenuLeftIcon: typeof import('./src/components/icons/MenuLeftIcon.vue')['default']
     NotificationIcon: typeof import('./src/components/icons/NotificationIcon.vue')['default']
+    GlobalHeader: typeof import('./src/components/global/GlobalHeader.vue')['default']
     InputGlobal: typeof import('./src/components/global/InputGlobal.vue')['default']
     ListItemMenu: typeof import('./src/components/layout/ListItemMenu.vue')['default']
+    Panel: typeof import('./src/components/panel/Panel.vue')['default']
+    PanelCols: typeof import('./src/components/panel/PanelCols.vue')['default']
     PanelRows: typeof import('./src/components/panel/PanelRows.vue')['default']
     PanelTable: typeof import('./src/components/panel/PanelTable.vue')['default']
+    PathHeader: typeof import('./src/components/header/PathHeader.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SearchIcon: typeof import('./src/components/icons/SearchIcon.vue')['default']
     SidebarMenu: typeof import('./src/components/SidebarMenu.vue')['default']
+    UserHeader: typeof import('./src/components/header/UserHeader.vue')['default']
 }
 }
