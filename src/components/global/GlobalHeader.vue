@@ -1,7 +1,7 @@
 <script setup>
   import UserHeader from '../header/UserHeader.vue';
   import PathHeader from '../header/PathHeader.vue';
-  defineProps({
+  const props = defineProps({
     isUser: {
       type: Boolean,
       default: false,
@@ -11,10 +11,13 @@
       default: () => {},
     },
   })
+  onMounted(() => {
+    console.log(props.user)
+  })
 </script>
 <template>
 <div>
-  <UserHeader  v-if="isUser"/>
+  <UserHeader @closemenu="$emit('closemenu')" :username="`${props.user.first_name + '  ' + props.user.last_name}`"  v-if="isUser"/>
   <PathHeader  v-else/>
 </div>
 </template>

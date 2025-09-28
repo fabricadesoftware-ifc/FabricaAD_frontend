@@ -1,14 +1,18 @@
 <script setup>
   import SidebarMenu from '@/components/SidebarMenu.vue';
   import GlobalHeader from '@/components/global/GlobalHeader.vue';
+  import { useAuthStore } from '@/stores/authStore';
+  const authStore = useAuthStore()
+
+  const closeMenu = ref(true)
 </script>
 <template>
   <v-main class="" style="display: flex; padding: 20px; gap: 20px; background-color: #F0F5F9;">
-    <div style="width: 380px;" class="default-item" >
-      <sidebar-menu/>
+    <div style="width: 380px;" class="default-item" v-if="closeMenu">
+      <sidebar-menu  />
     </div>
     <div style="gap: 20px; display: flex; flex-direction: column; width: 100%;">
-      <global-header :is-user="true" class="default-item"/>
+      <global-header @closemenu="closeMenu = !closeMenu" :user="authStore.user" :is-user="true" class="default-item"/>
       <global-header class="default-item"/>
       <div style="height: 100%;" class="default-item pa-8" >
         <slot>

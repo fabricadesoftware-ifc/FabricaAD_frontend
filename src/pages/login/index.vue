@@ -3,16 +3,31 @@ import UndergroundImg from '@/assets/fundologin.png'
 import Logo from '@/assets/Logo.png'
 import AuthMenu from '@/components/auth/AuthMenu.vue';
 import gsap from 'gsap'
-import { login } from '@/stores/loginTest';
 import { ref, onMounted } from 'vue';
 import { useDisplay } from 'vuetify';
+import { useAuthStore } from '@/stores/authStore';
+import { loginInfo } from '@/utils/login/info';
+const authStore = useAuthStore()
 const box = ref(null)
 const words = ref(null)
 const { width } = useDisplay()
 
+async function login() {
+  const valuesNewObj = ['registration', 'password']
+  const newObj = {}
+
+  loginInfo.value.forEach((el, index) => {
+    newObj[`${valuesNewObj[index]}`] = el.value
+  })
+
+  console.log(newObj)
+
+  await authStore.login(newObj)
+}
+
 onMounted(() => {
   const tl = gsap.timeline()
-  
+
   if (width.value < 1150) {
     tl.from(words.value, {
       opacity: 0,
@@ -21,7 +36,7 @@ onMounted(() => {
     }, 0)
 
     tl.to(words.value, {
-      y:  "-35vh" ,
+      y: "-35vh",
       duration: 1.5,
       ease: "power2.out"
     }, 1)
@@ -53,7 +68,6 @@ onMounted(() => {
       ease: "power2.out",
     }, 1)
   }
-
 })
 </script>
 <template>
@@ -71,6 +85,6 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <AuthMenu ref="box" @login="login"/>
+    <AuthMenu ref="box" @login="login" />
   </div>
 </template>
