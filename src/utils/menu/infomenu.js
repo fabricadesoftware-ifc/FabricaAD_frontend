@@ -9,7 +9,6 @@ const menuItems = [
   {
     title: "Departamentos",
     icon: "mdi-office-building",
-
   },
   {
     title: "Cargos",

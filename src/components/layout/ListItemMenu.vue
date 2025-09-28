@@ -1,4 +1,4 @@
-<script setup> 
+<script setup>
   const props = defineProps({
         subheaderIndexes: {
             type: Array,

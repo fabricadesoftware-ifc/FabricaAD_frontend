@@ -1,9 +1,6 @@
 <script setup>
   import SidebarMenu from '@/components/SidebarMenu.vue';
   import GlobalHeader from '@/components/global/GlobalHeader.vue';
-
-  
-
 </script>
 <template>
   <v-main class="" style="display: flex; padding: 20px; gap: 20px; background-color: #F0F5F9;">
