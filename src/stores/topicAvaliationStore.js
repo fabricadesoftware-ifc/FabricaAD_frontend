@@ -40,6 +40,6 @@ export const useTopicStore = defineStore('topicOfAvaliation', () => {
     loading,
     isLoading,
     postTopicOfAvaliation,
-    getTopicsOfAvaliations
+    getTopicsOfAvaliations,
 }
 });

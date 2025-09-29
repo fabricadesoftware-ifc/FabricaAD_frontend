@@ -5,8 +5,11 @@ import functionService from '@/services/functionService'
 export const useFunctionStore = defineStore('function', () => {
   const state = reactive({
     functions: [],
+    function: {},
     subordinates: [],
+    subordinate: {},
     loading: false,
+    connection: false,
   })
 
   const loading = computed(() => state.loading)
@@ -14,7 +17,9 @@ export const useFunctionStore = defineStore('function', () => {
     get: () => state.subordinates,
     set: (value) => state.subordinates = value,
   })
+  const subordinate = computed(() => state.subordinate)
   const functions = computed(() => state.functions)
+  const functionId = computed(() => state.function)
 
   const getFunctions = async (page) => {
     state.loading = true
@@ -25,6 +30,7 @@ export const useFunctionStore = defineStore('function', () => {
       console.error('Error getting functions:', error)
     } finally {
       state.loading = false
+      state.connection = true
     }
   }
 
@@ -37,6 +43,7 @@ export const useFunctionStore = defineStore('function', () => {
       console.error('Error getting functions:', error)
     } finally {
       state.loading = false
+      state.connection = true
     }
   }
 
@@ -50,8 +57,10 @@ export const useFunctionStore = defineStore('function', () => {
       console.error('Error getting functions:', error)
     } finally {
       state.loading = false
+      state.connection = true
     }
   }
+
   const getFunctionById = async (id) => {
     state.loading = true
     try {
@@ -61,6 +70,7 @@ export const useFunctionStore = defineStore('function', () => {
       console.error('Error getting function by ID:', error)
     } finally {
       state.loading = false
+      state.connection = true
     }
   }
 
@@ -73,6 +83,7 @@ export const useFunctionStore = defineStore('function', () => {
       console.error('Error creating function:', error)
     } finally {
       state.loading = false
+      state.connection = true
     }
   }
 
@@ -85,6 +96,7 @@ export const useFunctionStore = defineStore('function', () => {
       console.error('Error updating function:', error)
     } finally {
       state.loading = false
+      state.connection = true
     }
   }
 
@@ -107,14 +119,17 @@ export const useFunctionStore = defineStore('function', () => {
       console.log(state.subordinates)
     }
     catch (error) {
-      console.error('Error getting ')
+      console.error('Error getting subordinates:', error)
     }
     finally{
       state.loading = false
+      state.connection = true
     }
   }
 
   return {
+    functionId,
+    subordinate,
     subordinates,
     functions,
     loading,
