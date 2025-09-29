@@ -1,102 +1,115 @@
 import enterpriseService from '@/services/enterpriseService';
-import { get } from 'node_modules/axios/index.cjs';
 import { defineStore } from 'pinia';
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 
 export const useEnterpriseStore = defineStore('enterprise', () => {
-  const enterprises = ref([])
-  const loading = ref(false)
 
-  const isLoading = computed(() => loading.value)
-  const enterprisesCount = computed(() => enterprises.value.length)
+  const state = reactive({
+    enterprises: [],
+    enterprise: {},
+    loading: false,
+    connection: false,
+  })
+
+  const isLoading = computed(() => state.loading)
+  const connection = computed(() => state.connection)
+  const enterprises = computed(() => state.enterprises)
+  const enterprise = computed(() => state.enterprise)
 
   const getEnterprises = async () => {
-    loading.value = true
+    state.loading = true
     try{
-      enterprises.value = await enterpriseService.getAllEnterprises()
+      state.enterprises = await enterpriseService.getAllEnterprises()
     }
     catch(error){
-      console.error(error)
+      console.error('error in get enterprises:' + error)
     }
     finally{
-      loading.value = false
+      state.loading = false
+      state.connection = true
     }
   }
 
   const getEnterpriseById = async (id) => {
-    loading.value = true
+    state.loading = true
     try{
       const response = await enterpriseService.getEnterpriseById(id)
-      return response
+      state.enterprise = response
     }
     catch(error){
-      console.error(error)
+      console.error('error in get enterprise by id:' + error)
     }
     finally{
-      loading.value = false
+      state.loading = false
+      state.connection = true
     }
   }
 
   const createEnterprise = async (newEnterprise) => {
-    loading.value = true
+    state.loading = true
     try{
       await enterpriseService.createEnterprise(newEnterprise)
       enterprises.value.push(newEnterprise)
     }
     catch(error){
-      console.error(error)
+      console.error('error in create enterprise:' + error)
     }
     finally{
-      loading.value = false
+      state.loading = false
+      state.connection = true
     }
   }
 
   const updateEnterprise = async (enterprise) => {
-    loading.value = true
+    state.loading = true
     try{
       await enterpriseService.updateEnterprise(enterprise)
       getEnterprises()
     }
     catch(error){
-      console.error(error)
+      console.error('error in update enterprises:' + error)
     }
     finally{
-      loading.value = false
+      state.loading = false
+      state.connection = true
     }
   }
 
   const patchEnterprise = async (enterprisePartial) => {
-    loading.value = true
+    state.loading = true
     try{
       await enterpriseService.patchEnterprise(enterprisePartial)
       getEnterprises()
     }
     catch(error){
-      console.error(error)
+      console.error('error in update enterprise:' + error)
     }
     finally {
-      loading.value = false
+      state.loading = false
+      state.connection = true
     }
   }
 
   const deleteEnterprise = async (id) => {
-    loading.value = true
+    state.loading = true
     try{
       await enterpriseService.deleteEnterprise(id)
     }
     catch (error){
-      console.error(error)
+      console.error('error in delete enterprise:' + error)
     }
     finally{
-      loading.value = false
+      state.loading = false
+      state.connection = true
+      getEnterprises()
     }
   }
 
   return {
     enterprises,
-    loading,
+    connection,
+    enterprise,
     isLoading,
-    enterprisesCount,
     getEnterprises,
     getEnterpriseById,
     createEnterprise,

@@ -1,22 +1,24 @@
 import { defineStore } from "pinia";
-import userService from "@/services/userService";
-import router from "@/router";
+import authService from "@/services/authService";
 import { useStorage } from "@vueuse/core";
 
 export const useAuthStore = defineStore("auth", () => {
   const state = useStorage("authState", {
     user: null,
-    accessToken: localStorage.getItem("access_token") || null,
-    refreshToken: localStorage.getItem("refresh_token") || null,
+    accessToken: null,
+    refreshToken:  null,
+    connection: true,
+    loading: false,
   });
 
   const user = computed(() => state.value.user);
   const isAuthenticated = computed(() => state.value.user !== null);
 
   const login = async (credentials) => {
-    console.log(credentials)
+    state.value.loading = true;
+    state.value.connection = false;
     try {
-      const response = await userService.login(credentials);
+      const response = await authService.login(credentials);
       state.value.accessToken = response.access;
       state.value.refreshToken = response.refresh;
     } catch (error) {
@@ -25,18 +27,19 @@ export const useAuthStore = defineStore("auth", () => {
     }
     finally{
       await getMe()
+      state.value.loading = false;
+      state.value.connection = true;
     }
   };
 
   const getMe = async () => {
-    const response = await userService.getMe();
-    state.value.user = response;
-    console.log()
+    const response = await authService.getMe();
+    state.value.user = response
   }
 
   const logout = () => {
-    user.value = null;
-    userService.logout();
+    state.value.user = null;
+    authService.logout();
   };
 
   return {

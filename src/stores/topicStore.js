@@ -2,15 +2,20 @@ import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 import topicService from '@/services/topicService';
 
-
 export const useTopicStore = defineStore('topic', () => {
-  const topics = ref([]);
-  const loading = ref(null);
-  const isLoading = computed(() => loading.value)
-  const topicsCount = computed(() => topics.value.length)
+  const state = reactive({
+    topics: [],
+    topic: {},
+    loading: false,
+    connection: false,
+  })
+
+  const isLoading = computed(() => state.loading)
+  const topics = computed(() => state.topics)
+  const topic = computed(() => state.topic)
 
   const getTopics = async () => {
-    loading.value = true
+    state.loading = true
     try{
       topics.value = await topicService.getAllTopics()
     }
@@ -18,12 +23,13 @@ export const useTopicStore = defineStore('topic', () => {
       console.error('Error getting topics:', error)
     }
     finally{
-      loading.value = false
+      state.loading = false
+      state.connection = true
     }
   }
 
   const getTopicById = async (id) => {
-    loading.value = true
+    state.loading = true
     try{
       const response = await topicService.getTopicById(id)
       return response
@@ -32,12 +38,13 @@ export const useTopicStore = defineStore('topic', () => {
       console.error('Error getting topic by ID:', error)
     }
     finally {
-      loading.value = false
+      state.loading = false
+      state.connection = true
     }
   }
 
   const createTopic = async (newTopic) => {
-    loading.value = true
+    state.loading = true
     try{
       await topicService.createTopics(newTopic)
       getTopics()
@@ -46,12 +53,13 @@ export const useTopicStore = defineStore('topic', () => {
       console.error('Error creating topic:', error)
     }
     finally{
-      loading.value = false
+      state.loading = false
+      state.connection = true
     }
   }
 
   const updateTopic = async (topicId, topic) => {
-    loading.value = true
+    state.loading = true
     try {
       await topicService.updateTopic(topicId, topic)
       getTopics()
@@ -60,12 +68,13 @@ export const useTopicStore = defineStore('topic', () => {
       console.error('Error updating topic:', error)
     }
     finally{
-      loading.value = false
+      state.loading = false
+      state.connection = true
     }
   }
 
   const patchTopic = async (topicId, topic) => {
-    loading.value = true
+    state.loading = true
     try {
       await topicService.patchTopic(topicId, topic)
       getTopics()
@@ -74,12 +83,13 @@ export const useTopicStore = defineStore('topic', () => {
       console.error('Error patching topic:', error)
     }
     finally{
-      loading.value = false
+      state.loading = false
+      state.connection = true
     }
   }
 
   const deleteTopic = async (topicId) => {
-    loading.value = true
+    state.loading = true
     try {
       await topicService.deleteTopic(topicId);
       getTopics()
@@ -88,15 +98,15 @@ export const useTopicStore = defineStore('topic', () => {
       console.error('Error deleting topic:', error)
     }
     finally {
-      loading.value = false
+      state.loading = false
+      state.connection = true
     }
   }
 
   return {
     topics,
-    loading,
     isLoading,
-    topicsCount,
+    topic,
     getTopics,
     getTopicById,
     createTopic,

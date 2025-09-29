@@ -7,9 +7,11 @@
 // Plugins
 import { registerPlugins } from '@/plugins'
 import VueApexCharts from 'vue3-apexcharts'
+import { createPinia } from 'pinia'
 
 // Components
 import App from './App.vue'
+
 
 // Composables
 import { createApp } from 'vue'
@@ -19,6 +21,6 @@ import 'unfonts.css'
 
 const app = createApp(App)
 app.use(VueApexCharts)
+app.use(createPinia())
 registerPlugins(app)
-
 app.mount('#app')
