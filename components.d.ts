@@ -12,15 +12,14 @@ declare module 'vue' {
     CircularProgress: typeof import('./src/components/panel/CircularProgress.vue')['default']
     ColumnText: typeof import('./src/components/panel/column/ColumnText.vue')['default']
     EmployerRow: typeof import('./src/components/panel/rows/EmployerRow.vue')['default']
+    GlobalHeader: typeof import('./src/components/global/GlobalHeader.vue')['default']
     HeaderComp: typeof import('./src/components/global/layout/HeaderComp.vue')['default']
     InfoColumns: typeof import('./src/components/panel/column/InfoColumns.vue')['default']
     InfoPanel: typeof import('./src/components/panel/InfoPanel.vue')['default']
     InputGlobal: typeof import('./src/components/global/InputGlobal.vue')['default']
+    ListItemMenu: typeof import('./src/components/layout/ListItemMenu.vue')['default']
     MenuLeftIcon: typeof import('./src/components/icons/MenuLeftIcon.vue')['default']
     NotificationIcon: typeof import('./src/components/icons/NotificationIcon.vue')['default']
-    GlobalHeader: typeof import('./src/components/global/GlobalHeader.vue')['default']
-    InputGlobal: typeof import('./src/components/global/InputGlobal.vue')['default']
-    ListItemMenu: typeof import('./src/components/layout/ListItemMenu.vue')['default']
     Panel: typeof import('./src/components/panel/Panel.vue')['default']
     PanelCols: typeof import('./src/components/panel/PanelCols.vue')['default']
     PanelRows: typeof import('./src/components/panel/PanelRows.vue')['default']
@@ -31,5 +30,5 @@ declare module 'vue' {
     SearchIcon: typeof import('./src/components/icons/SearchIcon.vue')['default']
     SidebarMenu: typeof import('./src/components/SidebarMenu.vue')['default']
     UserHeader: typeof import('./src/components/header/UserHeader.vue')['default']
-}
+  }
 }

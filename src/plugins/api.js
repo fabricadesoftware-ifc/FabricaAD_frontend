@@ -5,6 +5,7 @@ const axiosInstance = axios.create({
 });
 
 const accessToken = localStorage.getItem('access_token');
+const AuthStore = localStorage.getItem('authState');
 if (accessToken) {
   axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
 }
@@ -43,8 +44,11 @@ axiosInstance.interceptors.response.use(
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
         delete axiosInstance.defaults.headers.common['Authorization'];
-        window.location.href = '/'; // Redirect to login page
+        window.location.href = '/login'; // Redirect to login page
         return Promise.reject(refreshError);
+      }
+      finally{
+        alert('Sua sessão expirou, faça login novamente.')
       }
     }
     return Promise.reject(error);
