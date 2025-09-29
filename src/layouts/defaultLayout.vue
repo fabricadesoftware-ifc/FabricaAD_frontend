@@ -1,11 +1,15 @@
+<script setup>
+  import SidebarMenu from '@/components/SidebarMenu.vue';
+  import GlobalHeader from '@/components/global/GlobalHeader.vue';
+</script>
 <template>
   <v-main class="" style="display: flex; padding: 20px; gap: 20px; background-color: #F0F5F9;">
     <div style="width: 380px;" class="default-item" >
       <sidebar-menu/>
     </div>
     <div style="gap: 20px; display: flex; flex-direction: column; width: 100%;">
-      <div style="height: 75px;" class="default-item"></div>
-      <div style="height: 60px;" class="default-item"></div>
+      <global-header :is-user="true" class="default-item"/>
+      <global-header class="default-item"/>
       <div style="height: 100%;" class="default-item pa-8" >
         <slot>
         </slot>
@@ -13,11 +17,6 @@
     </div>
   </v-main>
 </template>
-
-<script setup>
-import SidebarMenu from '@/components/SidebarMenu.vue';
-</script>
-
 <style scoped>
 .default-item{
   background-color: white;

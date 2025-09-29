@@ -1,6 +1,6 @@
 const menuItems = [
    {
-    subheader: "GERENCIAMNETO",
+    subheader: "GERENCIAMENTO",
    },
   {
     title: "Funcionários",
@@ -9,7 +9,6 @@ const menuItems = [
   {
     title: "Departamentos",
     icon: "mdi-office-building",
-  
   },
   {
     title: "Cargos",

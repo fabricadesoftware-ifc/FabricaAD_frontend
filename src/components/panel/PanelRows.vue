@@ -30,7 +30,7 @@ const props = defineProps(
                 <VCardSubtitle v-if="i === defineDescTitle">{{ panelArr[defineDesc] }}</VCardSubtitle>
             </div>
             <circular-progress :progress="value" v-if="typeof value  === 'number'"/>
-            <div v-if="typeof value === 'boolean' || !value"  class="rounded d-flex justify-center align-center" style="height: 35px;"  :class="value ? 'bg-blue-lighten-5 text-blue-lighten-2 ' : 'bg-red-lighten-5 text-red-lighten-2'">
+            <div v-if="typeof value === 'boolean'"  class="rounded d-flex justify-center align-center" style="height: 35px;"  :class="value ? 'bg-blue-lighten-5 text-blue-lighten-2 ' : 'bg-red-lighten-5 text-red-lighten-2'">
                 <p>{{ value ? 'em dia' : 'pendente' }}</p>
             </div>
         </td>
