@@ -12,6 +12,8 @@ declare module 'vue' {
     CircularProgress: typeof import('./src/components/panel/CircularProgress.vue')['default']
     ColumnText: typeof import('./src/components/panel/column/ColumnText.vue')['default']
     EmployerRow: typeof import('./src/components/panel/rows/EmployerRow.vue')['default']
+    FormDialog: typeof import('./src/components/rh/FormDialog.vue')['default']
+    FormItem: typeof import('./src/components/rh/FormItem.vue')['default']
     GlobalHeader: typeof import('./src/components/global/GlobalHeader.vue')['default']
     HeaderComp: typeof import('./src/components/global/layout/HeaderComp.vue')['default']
     InfoColumns: typeof import('./src/components/panel/column/InfoColumns.vue')['default']

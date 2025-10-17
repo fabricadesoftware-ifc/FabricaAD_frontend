@@ -13,7 +13,7 @@ const props = defineProps({
                     <div class="w-50">
                         <VTextField variant="outlined" placeholder="Buscar Tópico" rounded="lg" @input="$emit('search', $event)"/>
                     </div>
-                    <VBtn color="blue" icon="mdi-plus" rounded="lg"/>
+                    <VBtn color="blue" icon="mdi-plus" rounded="lg" @click="$emit('opendialog')" />
                 </div>
                 <div class="pa-5">
                     <slot></slot>
