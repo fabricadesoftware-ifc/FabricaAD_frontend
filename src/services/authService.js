@@ -22,7 +22,7 @@ class UserLogin {
 
   async getMe() {
     try {
-      const { data } = await api.get("users/me/");
+      const { data } = await api.get("usuarios/me/");
       console.log(data);
       return data;
     } catch (error) {
