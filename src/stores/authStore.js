@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import authService from "@/services/authService";
 import { useStorage } from "@vueuse/core";
+import router from "@/router";
 
 export const useAuthStore = defineStore("auth", () => {
   const state = useStorage("authState", {
@@ -29,6 +30,7 @@ export const useAuthStore = defineStore("auth", () => {
       await getMe()
       state.value.loading = false;
       state.value.connection = true;
+      router.push('/')
     }
   };
 
