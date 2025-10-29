@@ -5,6 +5,10 @@
   const authStore = useAuthStore()
 
   const closeMenu = ref(true)
+
+  onMounted(async () => {
+    await authStore.getMe()
+  })
 </script>
 <template>
   <v-main class="" style="display: flex; padding: 20px; gap: 20px; background-color: #F0F5F9;">

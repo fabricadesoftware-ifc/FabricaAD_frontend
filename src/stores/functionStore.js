@@ -53,6 +53,7 @@ export const useFunctionStore = defineStore('function', () => {
       const response = await functionService.SearchSubordinates(search)
       state.subordinates = response
       console.log(state.subordinates)
+
     } catch (error) {
       console.error('Error getting functions:', error)
     } finally {

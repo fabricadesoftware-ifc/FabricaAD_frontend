@@ -42,9 +42,10 @@ class FunctionService {
   }
 
   async SearchSubordinates(search) {
+    console.log(search)
     try {
       const { data } = await api.get(`functions/subordinates/?search_subordinates=${search}`);
-      return data.results
+      return data
     } catch (error) {
       console.error('Erro ao criar função', error);
       throw error;

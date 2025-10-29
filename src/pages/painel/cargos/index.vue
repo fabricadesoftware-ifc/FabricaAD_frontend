@@ -27,7 +27,7 @@ onMounted(async () => {
 </script>
 <template>
     <defaultLayout>
-        <Panel :count="positionStore.position.count">
+        <Panel :count="positionStore.position.count" @turnPage="turnPage" @search="positionStore.searchPosition">
             <panel-table :data-arr="arrData">
                 <PanelCols v-for="val, i in positionStore.position.results" :key="i">
                   <PanelRows :panel-arr="Object.values(val)"></PanelRows>
