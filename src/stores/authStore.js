@@ -27,7 +27,6 @@ export const useAuthStore = defineStore("auth", () => {
       throw error;
     }
     finally{
-      await getMe()
       state.value.loading = false;
       state.value.connection = true;
       router.push('/')
@@ -37,6 +36,7 @@ export const useAuthStore = defineStore("auth", () => {
   const getMe = async () => {
     const response = await authService.getMe();
     state.value.user = response
+    console.log(response)
   }
 
   const logout = () => {
@@ -49,5 +49,6 @@ export const useAuthStore = defineStore("auth", () => {
     isAuthenticated,
     login,
     logout,
+    getMe,
   };
 });

@@ -21,6 +21,11 @@ function CreateKeyArr(arr, remove) {
   arrData.value = keys
 }
 
+async function SearchEmployers(query){
+  const { value } = query.target
+  await functionStore.SearchSubordinatesFunction(value)
+}
+
 async function createItem(){
   console.log(infoEmployers.value)
 }
@@ -33,12 +38,13 @@ onMounted(async () => {
 </script>
 <template>
     <defaultLayout>
-        <Panel :count="functionStore.subordinates.count"  @opendialog="opendialog = !opendialog">
-            <panel-table :data-arr="arrData">
-                <PanelCols v-for="val, i in functionStore.subordinates.results" :key="i">
+        <Panel :count="functionStore.subordinates.count" @turnPage="turnPage" @search="SearchEmployers"  @opendialog="opendialog = !opendialog">
+            <panel-table v-if="functionStore.subordinates?.results?.length > 0" :data-arr="arrData" >
+                <PanelCols  v-for="val, i in functionStore.subordinates.results"  :key="i" >
                   <PanelRows :panel-arr="Object.values(val)" :define-desc="2" :define-arr-bg="3" :define-desc-title="0"></PanelRows>
-                </PanelCols>
+                  </PanelCols>
             </panel-table>
+            <VCardSubtitle class="text-center text-h6" v-else>Sua pesquisa não foi encontrada</VCardSubtitle>
         </Panel>
     </defaultLayout>
     <FormDialog :infos="infoEmployers" :dialog="opendialog" @createitem="createItem" @closedialog="opendialog = !opendialog" />

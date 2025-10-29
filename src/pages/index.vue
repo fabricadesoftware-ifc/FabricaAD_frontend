@@ -61,7 +61,7 @@ const beneficios = [
             relatórios em um só lugar.
           </p>
           <div class="d-flex flex-wrap gap-4">
-            <v-btn color="primary" large @click="router.push('/rh/painel/funcionarios/')">Acessar Plataforma</v-btn>
+            <v-btn color="primary" large @click="router.push('/painel/funcionarios/')">Acessar Plataforma</v-btn>
             <v-btn variant="outlined" large color="primary" @click="router.push('/contato')">Solicitar Demo</v-btn>
           </div>
         </v-col>
