@@ -11,8 +11,11 @@ const RoutePersonalized = computed(() => {
   const removeTwoFirstItems = substituteBars.slice(2)
   console.log(removeTwoFirstItems)
   const removeTwoLastItems = removeTwoFirstItems.slice(0, -2)
-  console.log(removeTwoLastItems)
-  return removeTwoLastItems
+  return removeTwoFirstItems
+})
+
+onMounted(() => {
+  console.log(route.path)
 })
 </script>
 <template>

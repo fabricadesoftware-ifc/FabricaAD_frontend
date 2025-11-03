@@ -5,14 +5,17 @@ const menuItems = [
   {
     title: "Funcionários",
     icon: "mdi-account-group",
+    to: "/painel/funcionarios",
   },
   {
     title: "Departamentos",
     icon: "mdi-office-building",
+    to: "/painel/departamentos",
   },
   {
     title: "Cargos",
     icon: "mdi-briefcase",
+    to: "/painel/cargos",
   },
   {
     subheader: "AVALIAÇÕES",
@@ -47,10 +50,12 @@ const menuItems = [
   {
     title: "Documentação",
     icon: "mdi-file-document-outline",
+    to: "/painel/documentacao",
   },
   {
     title: "Suporte",
     icon: "mdi-cog",
+    to: "/painel/suporte",
   },
 ];
 
