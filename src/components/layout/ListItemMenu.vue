@@ -3,11 +3,11 @@
         subheaderIndexes: {
             type: Array,
             required: false,
-            default: () => []
+            default: () => [],
         },
         arr: {
             type: Array,
-            required: true
+            required: true,
         }
     });
 </script>
@@ -17,7 +17,7 @@
         :key="i"
         class="font-weight-bold">
         <Vsubheader class="text-grey font-weight-medium" style="font-size: 12px;">{{ item.subheader }}</Vsubheader>
-        <v-list-item-title class="hover-item pa-2 font-weight-medium text-black d-flex ga-2 align-center" style="font-size: 16px; cursor: pointer;"><v-icon v-if="item.icon" class="w-25">{{ item.icon }}</v-icon>{{ item.title }}</v-list-item-title>
+        <router-link :to="item.to" class="text-decoration-none"><v-list-item-title class="hover-item pa-2 font-weight-medium text-black d-flex ga-2 align-center" style="font-size: 16px; cursor: pointer;"><v-icon v-if="item.icon" class="w-25">{{ item.icon }}</v-icon>{{ item.title }}</v-list-item-title></router-link>
     </v-list-item>
 </template>
 <style scoped>

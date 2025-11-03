@@ -1,6 +1,7 @@
 <script setup>
 import Panel from '@/components/panel/Panel.vue';
 import defaultLayout from '@/layouts/defaultLayout.vue';
+import { usePositionStore } from '@/stores/positionStore';
 import { ref } from 'vue';
 const positionStore = usePositionStore()
 const arrData = ref([])
@@ -17,7 +18,6 @@ function CreateKeyArr(arr, remove) {
   console.log(keys)
   arrData.value = keys
 }
-
 
 onMounted(async () => {
   await positionStore.getPositions()
