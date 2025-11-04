@@ -8,12 +8,13 @@
 
   onMounted(async () => {
     await authStore.getMe()
+    console.log(authStore.user.groups)
   })
 </script>
 <template>
   <v-main class="" style="display: flex; padding: 20px; gap: 20px; background-color: #F0F5F9;">
     <div style="width: 380px;" class="default-item" v-if="closeMenu">
-      <sidebar-menu  />
+      <sidebar-menu :usergroup="authStore.user.groups" />
     </div>
     <div style="gap: 20px; display: flex; flex-direction: column; width: 100%;">
       <global-header @closemenu="closeMenu = !closeMenu" :user="authStore.user" :is-user="true" class="default-item"/>
