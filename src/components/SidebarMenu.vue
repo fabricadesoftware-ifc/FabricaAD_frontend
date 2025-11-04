@@ -1,16 +1,22 @@
 <script setup>
   import menuItems from '@/utils/menu/infomenu';
   import ListItemMenu from './layout/ListItemMenu.vue';
+  defineProps({
+    usergroup: {
+      type: Array,
+      default: [],
+    },
+  })
 </script>
 <template>
   <div class="pa-6">
     <!-- Logo / Título -->
     <div class="logo-container">
-      <span class="logo-panel">PAINEL</span> <span class="logo-rh">RH</span>
+      <span class="logo-panel">PAINEL</span> <span class="logo-rh">{{ usergroup[0] === 1 || usergroup.length === 2 ? 'RH' : usergroup[0] === 2 ? 'Supervisor' : ''}}</span>
     </div>
     <!-- GERENCIAMENTO -->
     <v-list density="comfortable">
-      <ListItemMenu :arr="menuItems" :subheader-indexes="[0, 4, 8, 11]" /> 
+      <ListItemMenu :arr="menuItems" :subheader-indexes="[0, 4, 8, 11]" />
     </v-list>
   </div>
 </template>

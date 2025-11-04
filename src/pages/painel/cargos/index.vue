@@ -23,7 +23,6 @@ onMounted(async () => {
   await positionStore.getPositions()
   CreateKeyArr(positionStore.position.results[0], 'id')
 })
-
 </script>
 <template>
     <defaultLayout>
